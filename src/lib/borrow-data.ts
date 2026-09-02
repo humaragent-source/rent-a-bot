@@ -21,14 +21,14 @@ export type HeroItem = {
 };
 
 export const HERO: HeroItem[] = [
-  { id: "nurse", label: "Nurse", src: "/img/mara-nurse.png" },
-  { id: "gigi", label: "Gigi", src: "/img/jun-kids.png" },
-  { id: "wren", label: "Wren", src: "/img/wren-clean.jpg" },
-  { id: "bo", label: "Bo", src: "/img/rio-garden.png" },
-  { id: "dog", label: "Dog", src: "/img/pip-dog.png" },
-  { id: "hale", label: "Hale", src: "/img/hale-gym.jpg", opensHale: true },
-  { id: "errands", label: "Errands", src: "/img/errands.png" },
-  { id: "fox", label: "Fox", src: "/img/fox-grill.png" },
+  { id: "nurse", label: "Nurse", src: "/img/carousel-nurse.png" },
+  { id: "gigi", label: "Gigi", src: "/img/gigi-kids.png" },
+  { id: "wren", label: "Wren", src: "/img/wren-clean.png" },
+  { id: "bo", label: "Bo", src: "/img/bo-garden.png" },
+  { id: "dog", label: "Dog", src: "/img/carousel-dog.png" },
+  { id: "hale", label: "Hale", src: "/img/hale-gym.png", opensHale: true },
+  { id: "errands", label: "Errands", src: "/img/hale-gym.png" },
+  { id: "fox", label: "Fox", src: "/img/fox-kids.png" },
 ];
 
 export type ListingCard = {
@@ -44,7 +44,7 @@ export const CARDS: ListingCard[] = [
   {
     id: "hale",
     name: "Hale",
-    src: "/img/hale-gym.jpg",
+    src: "/img/hale-gym.png",
     skills: ["Gym", "Errands"],
     distance: "0.6 mi",
     opensHale: true,
@@ -52,28 +52,28 @@ export const CARDS: ListingCard[] = [
   {
     id: "wren",
     name: "Wren",
-    src: "/img/wren-clean.jpg",
+    src: "/img/wren-clean.png",
     skills: ["Clean", "Kids", "Errands"],
     distance: "1.1 mi",
   },
   {
     id: "gigi",
     name: "Gigi",
-    src: "/img/jun-kids.png",
+    src: "/img/gigi-kids.png",
     skills: ["Kids", "Gym"],
     distance: "1.2 mi",
   },
   {
     id: "fox",
     name: "Fox",
-    src: "/img/fox-grill.png",
+    src: "/img/fox-kids.png",
     skills: ["Grill", "Kids"],
     distance: "0.9 mi",
   },
   {
     id: "bo",
     name: "Bo",
-    src: "/img/rio-garden.png",
+    src: "/img/bo-garden.png",
     skills: ["Gym", "Garden"],
     distance: "0.4 mi",
   },
@@ -92,7 +92,7 @@ export const FILTER_IDS: Record<Skill, string[]> = {
 
 export const HALE = {
   name: "Hale",
-  src: "/img/hale-gym.jpg",
+  src: "/img/hale-gym.png",
   meta: "H2 · 0.6 mi · Mission",
   rate: GUEST_RATE,
   buyLine: "This robot costs about $29,900 to buy (tax & shipping extra).",
