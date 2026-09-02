@@ -123,19 +123,19 @@ body {
 }
 
 .c-helper {
-  color: #c4894a;
+  color: #d29b7a;
 }
 
 .c-walker {
-  color: #6a8f74;
+  color: #6d8aa3;
 }
 
 .c-cleaner {
-  color: #5d7d8c;
+  color: #7c8086;
 }
 
 .c-gardener {
-  color: #5f8a4a;
+  color: #6f8a6a;
 }
 
 .c-trainer {
@@ -143,7 +143,7 @@ body {
 }
 
 .c-cook {
-  color: #6a5848;
+  color: #c06d52;
 }
 
 @keyframes lockup-slot {
