@@ -26,7 +26,7 @@ export const HERO: HeroItem[] = [
   { id: "wren", label: "Wren", src: "/img/tess-clean.png" },
   { id: "bo", label: "Bo", src: "/img/rio-garden.png" },
   { id: "dog", label: "Dog", src: "/img/pip-dog.png" },
-  { id: "hale", label: "Hale", src: "/img/nico-gym.png", opensHale: true },
+  { id: "hale", label: "Hale", src: "/img/hale-gym.jpg", opensHale: true },
   { id: "errands", label: "Errands", src: "/img/errands.png" },
   { id: "fox", label: "Fox", src: "/img/fox-grill.png" },
 ];
@@ -44,7 +44,7 @@ export const CARDS: ListingCard[] = [
   {
     id: "hale",
     name: "Hale",
-    src: "/img/nico-gym.png",
+    src: "/img/hale-gym.jpg",
     skills: ["Gym", "Errands"],
     distance: "0.6 mi",
     opensHale: true,
@@ -92,7 +92,7 @@ export const FILTER_IDS: Record<Skill, string[]> = {
 
 export const HALE = {
   name: "Hale",
-  src: "/img/nico-gym.png",
+  src: "/img/hale-gym.jpg",
   meta: "H2 · 0.6 mi · Mission",
   rate: GUEST_RATE,
   buyLine: "This robot costs about $29,900 to buy (tax & shipping extra).",
