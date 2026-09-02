@@ -29,8 +29,8 @@ A custom domain or Vercel production deploy is not wired here. Origin is the sou
 ## What v1 includes
 
 - Landing hero with an empty reserved image slot (no robot photos)
-- Skill pills (Cleaning, Cooking, Childcare, Elder care, Yard work, Packing) that filter the browse area
-- Empty coming-soon cards only — no names, photos, or prices
+- Skill pills exactly: Nurse, Kids, Dog, Clean, Garden, Gym, Errands, Grill
+- Empty coming-soon cards only — no names or photos. If a card ever shows a price, guest price is $18/hr only (no retail, monthly robot cost, or owner-side take)
 - Waitlist buttons: **I want to rent** and **I have a robot**
 - Email (required) and city (optional), saved on the server
 

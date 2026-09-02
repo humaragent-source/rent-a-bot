@@ -7,7 +7,7 @@ import { WaitlistDialog } from "@/components/waitlist-dialog";
 import { SKILLS, type SkillId, skillLabel } from "@/lib/skills";
 import type { WaitlistIntent } from "@/lib/waitlist";
 
-const PLACEHOLDER_SLOTS = 6;
+const PLACEHOLDER_SLOTS = 8;
 
 export function HomePage() {
   const [skill, setSkill] = useState<SkillId | null>(null);
