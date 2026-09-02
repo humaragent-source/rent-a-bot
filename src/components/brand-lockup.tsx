@@ -1,39 +1,25 @@
-import type { CSSProperties } from "react";
+type BrandLockupProps = {
+  onClick?: () => void;
+};
 
-const LOCKUP_WORDS = [
-  { word: "Bot", color: "#222222" },
-  { word: "Nurse", color: "#6d7d8f" },
-  { word: "Helper", color: "#8a7d6c" },
-  { word: "Walker", color: "#737d88" },
-  { word: "Cleaner", color: "#6e857b" },
-  { word: "Gardener", color: "#70826a" },
-  { word: "Trainer", color: "#8a7468" },
-  { word: "Cook", color: "#8a6e6c" },
-] as const;
-
-export function BrandLockup() {
+export function BrandLockup({ onClick }: BrandLockupProps) {
   return (
-    <span className="lockup">
+    <h1 className="lockup" onClick={onClick}>
       <span className="lockup-static">Rent a</span>
       <span className="lockup-slot" aria-hidden="true">
-        <span className="lockup-sizer">Gardener</span>
         <span className="lockup-reel">
-          {LOCKUP_WORDS.map((item, index) => (
-            <span
-              key={item.word}
-              className="lockup-word"
-              style={
-                {
-                  color: item.color,
-                  "--i": index,
-                } as CSSProperties
-              }
-            >
-              {item.word}
-            </span>
-          ))}
+          <span className="lw c-bot">Bot</span>
+          <span className="lw c-nurse">Nurse</span>
+          <span className="lw c-helper">Helper</span>
+          <span className="lw c-walker">Walker</span>
+          <span className="lw c-cleaner">Cleaner</span>
+          <span className="lw c-gardener">Gardener</span>
+          <span className="lw c-trainer">Trainer</span>
+          <span className="lw c-cook">Cook</span>
+          <span className="lw c-bot">Bot</span>
         </span>
       </span>
-    </span>
+      <span className="sr-only">Rent a Bot</span>
+    </h1>
   );
 }

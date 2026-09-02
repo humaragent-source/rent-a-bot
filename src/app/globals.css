@@ -70,107 +70,117 @@ body {
   background: #fff;
 }
 
-.wordmark {
-  display: inline-flex;
-  align-items: center;
-  border: 0;
-  background: none;
-  color: var(--ink);
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1;
-  max-width: calc(100% - 48px);
-}
-
 .lockup {
-  display: inline-flex;
+  display: flex;
   align-items: baseline;
   gap: 0.28em;
-  white-space: nowrap;
+  margin: 0;
+  min-width: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  color: #222;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
 .lockup-static {
-  color: var(--ink);
+  flex: 0 0 auto;
 }
 
 .lockup-slot {
-  --row: 1.1em;
-  --radius: 1.33em;
-  position: relative;
-  display: inline-grid;
-  justify-items: start;
-  height: var(--row);
+  display: inline-block;
+  height: 1.08em;
   overflow: hidden;
-  perspective: 18em;
-  perspective-origin: 50% 50%;
-}
-
-.lockup-sizer {
-  grid-area: 1 / 1;
-  visibility: hidden;
-  height: var(--row);
-  line-height: var(--row);
-  pointer-events: none;
+  vertical-align: bottom;
+  min-width: 7.6ch;
+  position: relative;
 }
 
 .lockup-reel {
-  grid-area: 1 / 1;
-  position: relative;
-  width: 100%;
-  height: var(--row);
-  transform-style: preserve-3d;
-  transform-origin: 50% 50%;
-  animation: lockup-wheel 16s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-}
-
-.lockup-word {
-  --i: 0;
-  position: absolute;
-  inset: 0;
-  height: var(--row);
-  line-height: var(--row);
   display: flex;
-  align-items: center;
-  backface-visibility: hidden;
-  transform: rotateX(calc(var(--i) * 45deg)) translateZ(var(--radius));
+  flex-direction: column;
+  animation: lockup-slot 16s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
-@keyframes lockup-wheel {
+.lw {
+  display: block;
+  height: 1.08em;
+  line-height: 1.08em;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.c-bot {
+  color: #222;
+}
+
+.c-nurse {
+  color: #b85c63;
+}
+
+.c-helper {
+  color: #c4894a;
+}
+
+.c-walker {
+  color: #6a8f74;
+}
+
+.c-cleaner {
+  color: #5d7d8c;
+}
+
+.c-gardener {
+  color: #5f8a4a;
+}
+
+.c-trainer {
+  color: #b56a38;
+}
+
+.c-cook {
+  color: #6a5848;
+}
+
+@keyframes lockup-slot {
   0%,
-  8.4% {
-    transform: rotateX(0deg);
+  8.5% {
+    transform: translateY(0);
   }
   12.5%,
-  20.9% {
-    transform: rotateX(-45deg);
+  21% {
+    transform: translateY(-1.08em);
   }
   25%,
-  33.4% {
-    transform: rotateX(-90deg);
+  33.5% {
+    transform: translateY(-2.16em);
   }
   37.5%,
-  45.9% {
-    transform: rotateX(-135deg);
+  46% {
+    transform: translateY(-3.24em);
   }
   50%,
-  58.4% {
-    transform: rotateX(-180deg);
+  58.5% {
+    transform: translateY(-4.32em);
   }
   62.5%,
-  70.9% {
-    transform: rotateX(-225deg);
+  71% {
+    transform: translateY(-5.40em);
   }
   75%,
-  83.4% {
-    transform: rotateX(-270deg);
+  83.5% {
+    transform: translateY(-6.48em);
   }
   87.5%,
-  95.9% {
-    transform: rotateX(-315deg);
+  96% {
+    transform: translateY(-7.56em);
   }
   100% {
-    transform: rotateX(-360deg);
+    transform: translateY(-8.64em);
   }
 }
 
@@ -178,6 +188,22 @@ body {
   .lockup-reel {
     animation: none;
   }
+
+  .lockup-reel .lw:not(:first-child) {
+    display: none;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .you {

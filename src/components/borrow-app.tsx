@@ -3,7 +3,7 @@
 /* Grid spec uses plain <img> for Cast portraits. */
 /* eslint-disable @next/next/no-img-element */
 
-import { useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 
 import { BrandLockup } from "@/components/brand-lockup";
 import {
@@ -115,17 +115,14 @@ export function RentABotApp() {
   const showTabbar = !listing;
   const showBookbar = listing;
 
+  useEffect(() => {
+    document.title = listing ? "Hale · Rent a Bot" : "Rent a Bot";
+  }, [listing]);
+
   return (
     <div className="phone">
       <header className="topbar">
-        <button
-          type="button"
-          className="wordmark"
-          onClick={goExplore}
-          aria-label="Rent a Bot"
-        >
-          <BrandLockup />
-        </button>
+        <BrandLockup onClick={goExplore} />
         <button type="button" className="you" onClick={openProfile} aria-label="Profile">
           <img src="/img/avatar-you.svg" alt="" />
         </button>
