@@ -23,7 +23,7 @@ export type HeroItem = {
 export const HERO: HeroItem[] = [
   { id: "nurse", label: "Nurse", src: "/img/mara-nurse.png" },
   { id: "gigi", label: "Gigi", src: "/img/jun-kids.png" },
-  { id: "wren", label: "Wren", src: "/img/tess-clean.png" },
+  { id: "wren", label: "Wren", src: "/img/wren-clean.jpg" },
   { id: "bo", label: "Bo", src: "/img/rio-garden.png" },
   { id: "dog", label: "Dog", src: "/img/pip-dog.png" },
   { id: "hale", label: "Hale", src: "/img/hale-gym.jpg", opensHale: true },
@@ -52,7 +52,7 @@ export const CARDS: ListingCard[] = [
   {
     id: "wren",
     name: "Wren",
-    src: "/img/tess-clean.png",
+    src: "/img/wren-clean.jpg",
     skills: ["Clean", "Kids", "Errands"],
     distance: "1.1 mi",
   },
