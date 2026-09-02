@@ -5,6 +5,7 @@
 
 import { useMemo, useState, type FormEvent } from "react";
 
+import { BrandLockup } from "@/components/brand-lockup";
 import {
   HALE,
   HERO,
@@ -30,7 +31,7 @@ const WAITLIST_COPY: Record<
   },
 };
 
-export function BorrowApp() {
+export function RentABotApp() {
   const [tab, setTab] = useState<Tab>("explore");
   const [skill, setSkill] = useState<Skill>("Gym");
   const [listing, setListing] = useState(false);
@@ -117,8 +118,13 @@ export function BorrowApp() {
   return (
     <div className="phone">
       <header className="topbar">
-        <button type="button" className="wordmark" onClick={goExplore}>
-          Borrow
+        <button
+          type="button"
+          className="wordmark"
+          onClick={goExplore}
+          aria-label="Rent a Bot"
+        >
+          <BrandLockup />
         </button>
         <button type="button" className="you" onClick={openProfile} aria-label="Profile">
           <img src="/img/avatar-you.svg" alt="" />
@@ -381,7 +387,7 @@ export function BorrowApp() {
       )}
 
       {showTabbar ? (
-        <nav className="tabbar" aria-label="Borrow">
+        <nav className="tabbar" aria-label="Rent a Bot">
           <button
             type="button"
             className={tab === "explore" ? "tab is-on" : "tab"}

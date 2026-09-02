@@ -1,5 +1,5 @@
-import { BorrowApp } from "@/components/borrow-app";
+import { RentABotApp } from "@/components/borrow-app";
 
 export default function Home() {
-  return <BorrowApp />;
+  return <RentABotApp />;
 }

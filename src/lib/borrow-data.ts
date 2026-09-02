@@ -34,6 +34,7 @@ export const HERO: HeroItem[] = [
 export type ListingCard = {
   id: string;
   name: string;
+  model: string;
   src: string;
   skills: Skill[];
   distance: string;
@@ -44,6 +45,7 @@ export const CARDS: ListingCard[] = [
   {
     id: "hale",
     name: "Hale",
+    model: "H2",
     src: "/img/hale-gym.png",
     skills: ["Gym", "Errands"],
     distance: "0.6 mi",
@@ -52,6 +54,7 @@ export const CARDS: ListingCard[] = [
   {
     id: "wren",
     name: "Wren",
+    model: "NEO",
     src: "/img/wren-clean.png",
     skills: ["Clean", "Kids", "Errands"],
     distance: "1.1 mi",
@@ -59,6 +62,7 @@ export const CARDS: ListingCard[] = [
   {
     id: "gigi",
     name: "Gigi",
+    model: "G1",
     src: "/img/gigi-kids.png",
     skills: ["Kids", "Gym"],
     distance: "1.2 mi",
@@ -66,6 +70,7 @@ export const CARDS: ListingCard[] = [
   {
     id: "fox",
     name: "Fox",
+    model: "X2",
     src: "/img/fox-kids.png",
     skills: ["Grill", "Kids"],
     distance: "0.9 mi",
@@ -73,8 +78,9 @@ export const CARDS: ListingCard[] = [
   {
     id: "bo",
     name: "Bo",
+    model: "T1",
     src: "/img/bo-garden.png",
-    skills: ["Gym", "Garden"],
+    skills: ["Garden", "Gym"],
     distance: "0.4 mi",
   },
 ];

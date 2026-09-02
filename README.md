@@ -1,8 +1,8 @@
-# Borrow
+# Rent a Bot
 
-Phone UI for a public marketplace that rents humanoid robots by skill. Grid owns the visual system. Cast owns portraits. Lot owns prices.
+Airbnb-light marketplace for renting humanoid robots by skill. Average Joes. Skills, not specs.
 
-This repo implements Grid’s 390px Borrow shell. It does not redesign it.
+This repo is the 390px phone UI. Grid owns the visual system. Cast owns portraits. Lot owns prices. It does not redesign those.
 
 ## Run locally
 
@@ -18,21 +18,25 @@ npm run build
 npm start
 ```
 
-## Preview URL
+## Preview
 
-Use the Cursor preview of the local Next.js server on port `43180`. That is the HTTPS preview for this session. Do not expose an unauthenticated public tunnel.
-
-Origin is the source of truth. If a host cannot see Origin yet, do not mirror to GitHub just to attach Vercel. Create the Origin repository, then connect that remote to the host.
+Use the Cursor preview of the local Next.js server on port `43180`. Do not deploy to Vercel from this session. Do not expose an unauthenticated public tunnel.
 
 ## What’s on the phone
 
-- Brand **Borrow**, coral `#ff385c`, max-width 390px
+- Brand **Rent a Bot**, coral `#ff385c`, max-width 390px
+- Lockup: static “Rent a” + a rotating last word (Bot → Nurse → Helper → Walker → Cleaner → Gardener → Trainer → Cook → Bot). Reduced motion freezes on Bot
 - Sticky topbar, fixed tabbar, Hale listing Book bar
 - Hero row with Cast portraits
 - Headline: A robot for the afternoon.
 - Search fields as specified (Mission / Sat · this afternoon / Gym, kids, errands)
 - Skill pills: Nurse, Kids, Dog, Clean, Garden, Gym, Errands, Grill
-- Five cards at **$18/hr** only. No ratings or review counts. No retail on cards.
+- Five cards at **$18/hr** only. No ratings or review counts. No retail on cards
+  - Hale (H2) Gym / Errands
+  - Wren (NEO) Clean / Kids / Errands
+  - Gigi (G1) Kids / Gym
+  - Fox (X2) Grill / Kids — kids photo for now
+  - Bo (T1) Garden / Gym
 - Hale listing copy from Lot, including the $29,900 buy-line on the listing only
 - Profile tab waitlist: **I want to rent** / **I have a robot**
 
@@ -40,14 +44,13 @@ Origin is the source of truth. If a host cannot see Origin yet, do not mirror to
 
 Saved under `public/img/` as the supplied filenames. Do not redraw or substitute robot bodies.
 
-- `nico-gym.png` — Hale / Gym
-- `tess-clean.png` — Wren / Clean
-- `jun-kids.png` — Gigi / Kids
-- `fox-grill.png` — Fox / Grill
-- `rio-garden.png` — Bo / Garden
-- `mara-nurse.png` — Nurse
-- `pip-dog.png` — Dog
-- `errands.png` — Errands
+- `hale-gym.png` — Hale / Gym
+- `wren-clean.png` — Wren / Clean
+- `gigi-kids.png` — Gigi / Kids
+- `fox-kids.png` — Fox / Kids stand-in
+- `bo-garden.png` — Bo / Garden
+- `carousel-nurse.png` — Nurse
+- `carousel-dog.png` — Dog
 - `avatar-you.svg` / `sam.svg` — placeholders
 
 ## Waitlist storage
@@ -67,3 +70,4 @@ Replace `src/lib/waitlist-store.ts` to swap in a real database.
 - Figure or Optimus
 - Owner-side take
 - Generated robot photos
+- Coastal Grade, Andres Log, and Ascendr (other products)
