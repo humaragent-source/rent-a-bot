@@ -1,8 +1,8 @@
-# By Skill
+# Borrow
 
-A public marketplace site for renting humanoid robots **by skill**. This is v1 only: browse filters and a waitlist. No listings, accounts, bookings, or payments.
+Phone UI for a public marketplace that rents humanoid robots by skill. Grid owns the visual system. Cast owns portraits. Lot owns prices.
 
-Grid owns the visual system. Cast owns photography. Lot owns real prices. This repo does not invent those.
+This repo implements Grid’s 390px Borrow shell. It does not redesign it.
 
 ## Run locally
 
@@ -13,8 +13,6 @@ npm run dev
 
 Open [http://127.0.0.1:43180](http://127.0.0.1:43180).
 
-Production-style local run:
-
 ```bash
 npm run build
 npm start
@@ -22,35 +20,50 @@ npm start
 
 ## Preview URL
 
-The working HTTPS preview for this cloud session is the Cursor preview of the local Next.js server on port `43180`. Open the Preview card from the agent session.
+Use the Cursor preview of the local Next.js server on port `43180`. That is the HTTPS preview for this session. Do not expose an unauthenticated public tunnel.
 
-A custom domain or Vercel production deploy is not wired here. Origin is the source of truth. If Vercel cannot see this Origin repo yet, do **not** mirror the project to GitHub just to make Vercel work. Next step: create the Origin repository (Create repo), then connect that Origin remote to your host, or attach a custom domain once the host accepts Origin.
+Origin is the source of truth. If a host cannot see Origin yet, do not mirror to GitHub just to attach Vercel. Create the Origin repository, then connect that remote to the host.
 
-## What v1 includes
+## What’s on the phone
 
-- Landing hero with an empty reserved image slot (no robot photos)
-- Skill pills exactly: Nurse, Kids, Dog, Clean, Garden, Gym, Errands, Grill
-- Empty coming-soon cards only — no names or photos. If a card ever shows a price, guest price is $18/hr only (no retail, monthly robot cost, or owner-side take)
-- Waitlist buttons: **I want to rent** and **I have a robot**
-- Email (required) and city (optional), saved on the server
+- Brand **Borrow**, coral `#ff385c`, max-width 390px
+- Sticky topbar, fixed tabbar, Hale listing Book bar
+- Hero row with Cast portraits
+- Headline: A robot for the afternoon.
+- Search fields as specified (Mission / Sat · this afternoon / Gym, kids, errands)
+- Skill pills: Nurse, Kids, Dog, Clean, Garden, Gym, Errands, Grill
+- Five cards at **$18/hr** only. No ratings or review counts. No retail on cards.
+- Hale listing copy from Lot, including the $29,900 buy-line on the listing only
+- Profile tab waitlist: **I want to rent** / **I have a robot**
+
+## Cast images
+
+Saved under `public/img/` as the supplied filenames. Do not redraw or substitute robot bodies.
+
+- `nico-gym.png` — Hale / Gym
+- `tess-clean.png` — Wren / Clean
+- `jun-kids.png` — Gigi / Kids
+- `fox-grill.png` — Fox / Grill
+- `rio-garden.png` — Bo / Garden
+- `mara-nurse.png` — Nurse
+- `pip-dog.png` — Dog
+- `errands.png` — Errands
+- `avatar-you.svg` / `sam.svg` — placeholders
 
 ## Waitlist storage
 
-Submissions are written by `POST /api/waitlist` only. Nothing in the client stores secrets or writes the file.
-
-v1 store: a JSON file on the server at `data/waitlist.json` (created on first submit, gitignored).
-
-To use a different file path:
+`POST /api/waitlist` writes `data/waitlist.json` on the server (gitignored). Nothing in the client stores secrets.
 
 ```bash
 WAITLIST_PATH=/var/data/waitlist.json npm start
 ```
 
-To swap to a real database later, replace `src/lib/waitlist-store.ts` and keep the same `appendWaitlistEntry` shape. File storage is local-process durable enough for this slice; it is not shared across serverless instances.
+Replace `src/lib/waitlist-store.ts` to swap in a real database.
 
 ## Out of scope
 
-- Robot models, hosts, reviews, availability
-- Prices, rates, or any dollar amounts
-- Payments, booking, or accounts
-- Generated or stock robot images
+- Checkout or payments (Book does not start checkout)
+- Star ratings or review counts
+- Figure or Optimus
+- Owner-side take
+- Generated robot photos
