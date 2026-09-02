@@ -71,6 +71,8 @@ body {
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
   border: 0;
   background: none;
   color: var(--coral);
