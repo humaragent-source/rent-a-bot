@@ -24,8 +24,8 @@ Use the Cursor preview of the local Next.js server on port `43180`. Do not deplo
 
 ## What’s on the phone
 
-- Brand **Rent a Bot**, coral `#ff385c`, max-width 390px
-- Lockup: static “Rent a” + a rotating last word (Bot → Nurse → Helper → Walker → Cleaner → Gardener → Trainer → Cook → Bot). Reduced motion freezes on Bot
+- Brand **Rent a Bot** in black, max-width 390px. Coral stays on search and the tab bar
+- Lockup: static “Rent a” + a circular last-word slot (Bot → Nurse → Helper → Walker → Cleaner → Gardener → Trainer → Cook → Bot) in muted colors. Reduced motion freezes on Bot
 - Sticky topbar, fixed tabbar, Hale listing Book bar
 - Hero row with Cast portraits
 - Headline: A robot for the afternoon.

@@ -1,13 +1,14 @@
+import type { CSSProperties } from "react";
+
 const LOCKUP_WORDS = [
-  { word: "Bot", color: "#ff385c" },
-  { word: "Nurse", color: "#2a7de1" },
-  { word: "Helper", color: "#c9842a" },
-  { word: "Walker", color: "#5b6abf" },
-  { word: "Cleaner", color: "#1a9b8e" },
-  { word: "Gardener", color: "#3b8f3f" },
-  { word: "Trainer", color: "#e06b1f" },
-  { word: "Cook", color: "#c23a4a" },
-  { word: "Bot", color: "#ff385c" },
+  { word: "Bot", color: "#222222" },
+  { word: "Nurse", color: "#6d7d8f" },
+  { word: "Helper", color: "#8a7d6c" },
+  { word: "Walker", color: "#737d88" },
+  { word: "Cleaner", color: "#6e857b" },
+  { word: "Gardener", color: "#70826a" },
+  { word: "Trainer", color: "#8a7468" },
+  { word: "Cook", color: "#8a6e6c" },
 ] as const;
 
 export function BrandLockup() {
@@ -19,9 +20,14 @@ export function BrandLockup() {
         <span className="lockup-reel">
           {LOCKUP_WORDS.map((item, index) => (
             <span
-              key={`${item.word}-${index}`}
+              key={item.word}
               className="lockup-word"
-              style={{ color: item.color }}
+              style={
+                {
+                  color: item.color,
+                  "--i": index,
+                } as CSSProperties
+              }
             >
               {item.word}
             </span>
