@@ -18,9 +18,11 @@ npm run build
 npm start
 ```
 
+Public signed-out site: [https://humaragent-source.github.io/rent-a-bot/](https://humaragent-source.github.io/rent-a-bot/). That is a static export (`docs/` on `main`). No Vercel.
+
 ## Preview
 
-Use the Cursor preview of the local Next.js server on port `43180`. Do not deploy to Vercel from this session. Do not expose an unauthenticated public tunnel.
+Use the Cursor preview of the local Next.js server on port `43180`. Do not deploy to Vercel.
 
 ## What’s on the phone
 
@@ -55,13 +57,7 @@ Saved under `public/img/` as the supplied filenames. Do not redraw or substitute
 
 ## Waitlist storage
 
-`POST /api/waitlist` writes `data/waitlist.json` on the server (gitignored). Nothing in the client stores secrets.
-
-```bash
-WAITLIST_PATH=/var/data/waitlist.json npm start
-```
-
-Replace `src/lib/waitlist-store.ts` to swap in a real database.
+The GitHub Pages build has no API. The waitlist saves on the device (`localStorage`). Nothing in the client stores secrets.
 
 ## Out of scope
 

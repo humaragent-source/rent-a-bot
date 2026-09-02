@@ -6,6 +6,7 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 
 import { BrandLockup } from "@/components/brand-lockup";
+import { asset } from "@/lib/asset";
 import {
   HALE,
   HERO,
@@ -14,6 +15,7 @@ import {
   type Skill,
 } from "@/lib/borrow-data";
 import type { WaitlistIntent } from "@/lib/waitlist";
+import { saveWaitlistLocally } from "@/lib/waitlist-local";
 
 type Tab = "explore" | "wishlists" | "trips" | "inbox" | "profile";
 
@@ -81,35 +83,17 @@ export function RentABotApp() {
     setWaitStatus("saving");
     setWaitMessage(null);
 
-    try {
-      const response = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, city, intent }),
-      });
-      const data: unknown = await response.json().catch(() => null);
-      const error =
-        data &&
-        typeof data === "object" &&
-        "error" in data &&
-        typeof data.error === "string"
-          ? data.error
-          : null;
-
-      if (!response.ok) {
-        setWaitStatus("error");
-        setWaitMessage(error ?? "Could not save your spot. Try again.");
-        return;
-      }
-
-      setWaitStatus("success");
-      setWaitMessage(
-        "You’re on the waitlist. We’ll email you when this part of the marketplace opens."
-      );
-    } catch {
+    const saved = saveWaitlistLocally({ email, city, intent });
+    if (!saved.ok) {
       setWaitStatus("error");
-      setWaitMessage("Could not reach the server. Check your connection and try again.");
+      setWaitMessage(saved.error);
+      return;
     }
+
+    setWaitStatus("success");
+    setWaitMessage(
+      "You’re on the waitlist. We’ll email you when this part of the marketplace opens."
+    );
   }
 
   const showTabbar = !listing;
@@ -124,14 +108,14 @@ export function RentABotApp() {
       <header className="topbar">
         <BrandLockup onClick={goExplore} />
         <button type="button" className="you" onClick={openProfile} aria-label="Profile">
-          <img src="/img/avatar-you.svg" alt="" />
+          <img src={asset("/img/avatar-you.svg")} alt="" />
         </button>
       </header>
 
       {listing ? (
         <div className="scroll is-listing">
           <div className="hero-photo">
-            <img src={HALE.src} alt="" />
+            <img src={asset(HALE.src)} alt="" />
             <button
               type="button"
               className="back"
@@ -180,7 +164,7 @@ export function RentABotApp() {
             <div className="rule" />
             <h2>Hosted by Sam</h2>
             <div className="host">
-              <img src="/img/sam.svg" alt="" />
+              <img src={asset("/img/sam.svg")} alt="" />
               <p>Sam</p>
             </div>
           </article>
@@ -199,12 +183,12 @@ export function RentABotApp() {
                   className="hero-item"
                   onClick={openHale}
                 >
-                  <img src={item.src} alt="" />
+                  <img src={asset(item.src)} alt="" />
                   <span>{item.label}</span>
                 </button>
               ) : (
                 <div key={item.id} className="hero-item">
-                  <img src={item.src} alt="" />
+                  <img src={asset(item.src)} alt="" />
                   <span>{item.label}</span>
                 </div>
               )
@@ -250,7 +234,7 @@ export function RentABotApp() {
             {cards.map((card) => {
               const inner = (
                 <>
-                  <img src={card.src} alt="" />
+                  <img src={asset(card.src)} alt="" />
                   <div className="card-body">
                     <p className="card-name">{card.name}</p>
                     <div className="card-skills">
