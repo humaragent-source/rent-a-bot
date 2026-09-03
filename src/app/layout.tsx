@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rent a Bot",
+  title: "Renta Robo",
   description: "A robot for the afternoon.",
 };
 

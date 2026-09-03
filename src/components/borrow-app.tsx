@@ -8,10 +8,11 @@ import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { BrandLockup } from "@/components/brand-lockup";
 import { asset } from "@/lib/asset";
 import {
-  HALE,
   HERO,
   SKILLS,
   cardsForSkill,
+  machineById,
+  type Listing,
   type Skill,
 } from "@/lib/borrow-data";
 import type { WaitlistIntent } from "@/lib/waitlist";
@@ -33,10 +34,10 @@ const WAITLIST_COPY: Record<
   },
 };
 
-export function RentABotApp() {
+export function RentaRoboApp() {
   const [tab, setTab] = useState<Tab>("explore");
   const [skill, setSkill] = useState<Skill>("Gym");
-  const [listing, setListing] = useState(false);
+  const [listingId, setListingId] = useState<string | null>(null);
   const [bookNote, setBookNote] = useState(false);
   const [intent, setIntent] = useState<WaitlistIntent | null>(null);
   const [email, setEmail] = useState("");
@@ -50,19 +51,19 @@ export function RentABotApp() {
 
   function goExplore() {
     setTab("explore");
-    setListing(false);
+    setListingId(null);
     setBookNote(false);
   }
 
-  function openHale() {
+  function openListing(id: string) {
     setTab("explore");
-    setListing(true);
+    setListingId(id);
     setBookNote(false);
   }
 
   function openProfile() {
     setTab("profile");
-    setListing(false);
+    setListingId(null);
     setBookNote(false);
   }
 
@@ -96,11 +97,15 @@ export function RentABotApp() {
     );
   }
 
+  const listing: Listing | undefined = listingId
+    ? machineById(listingId)
+    : undefined;
   const showTabbar = !listing;
-  const showBookbar = listing;
 
   useEffect(() => {
-    document.title = listing ? "Hale · Rent a Bot" : "Rent a Bot";
+    document.title = listing
+      ? `${listing.name} · Renta Robo`
+      : "Renta Robo";
   }, [listing]);
 
   return (
@@ -115,12 +120,12 @@ export function RentABotApp() {
       {listing ? (
         <div className="scroll is-listing">
           <div className="hero-photo">
-            <img src={asset(HALE.src)} alt="" />
+            <img src={asset(listing.src)} alt="" />
             <button
               type="button"
               className="back"
               onClick={() => {
-                setListing(false);
+                setListingId(null);
                 setBookNote(false);
               }}
               aria-label="Back"
@@ -129,19 +134,27 @@ export function RentABotApp() {
             </button>
           </div>
           <article className="listing">
-            <h1>{HALE.name}</h1>
-            <p className="listing-meta">{HALE.meta}</p>
-            <p className="listing-rate">{HALE.rate}</p>
-            <p className="buy-line">{HALE.buyLine}</p>
+            <h1>{listing.name}</h1>
+            <p className="listing-meta">{listing.meta}</p>
+            <p className="listing-rate">{listing.rate}</p>
+            <p className="buy-line">{listing.buyLine}</p>
+            {listing.extraSrcs?.map((src) => (
+              <img
+                key={src}
+                className="listing-extra"
+                src={asset(src)}
+                alt=""
+              />
+            ))}
             <div className="rule" />
-            <h2>About Hale</h2>
-            {HALE.about.map((paragraph) => (
+            <h2>About {listing.name}</h2>
+            {listing.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
             <div className="rule" />
             <h2>Skills</h2>
             <div className="card-skills">
-              {HALE.skills.map((item) => (
+              {listing.skills.map((item) => (
                 <span key={item} className="chip">
                   {item}
                 </span>
@@ -150,14 +163,14 @@ export function RentABotApp() {
             <div className="rule" />
             <h2>Sample jobs</h2>
             <ul>
-              {HALE.sampleJobs.map((job) => (
+              {listing.sampleJobs.map((job) => (
                 <li key={job}>{job}</li>
               ))}
             </ul>
             <div className="rule" />
             <h2>House rules</h2>
             <ul>
-              {HALE.houseRules.map((rule) => (
+              {listing.houseRules.map((rule) => (
                 <li key={rule}>{rule}</li>
               ))}
             </ul>
@@ -175,24 +188,17 @@ export function RentABotApp() {
       ) : tab === "explore" ? (
         <div className="scroll">
           <div className="hero-row">
-            {HERO.map((item) =>
-              item.opensHale ? (
-                <button
-                  key={item.id}
-                  type="button"
-                  className="hero-item"
-                  onClick={openHale}
-                >
-                  <img src={asset(item.src)} alt="" />
-                  <span>{item.label}</span>
-                </button>
-              ) : (
-                <div key={item.id} className="hero-item">
-                  <img src={asset(item.src)} alt="" />
-                  <span>{item.label}</span>
-                </div>
-              )
-            )}
+            {HERO.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                className="hero-item"
+                onClick={() => openListing(item.id)}
+              >
+                <img src={asset(item.src)} alt="" />
+                <span>{item.label}</span>
+              </button>
+            ))}
           </div>
 
           <h1 className="headline">A robot for the afternoon.</h1>
@@ -254,19 +260,15 @@ export function RentABotApp() {
                 </>
               );
 
-              return card.opensHale ? (
+              return (
                 <button
                   key={card.id}
                   type="button"
                   className="card"
-                  onClick={openHale}
+                  onClick={() => openListing(card.id)}
                 >
                   {inner}
                 </button>
-              ) : (
-                <article key={card.id} className="card">
-                  {inner}
-                </article>
               );
             })}
           </div>
@@ -368,7 +370,7 @@ export function RentABotApp() {
       )}
 
       {showTabbar ? (
-        <nav className="tabbar" aria-label="Rent a Bot">
+        <nav className="tabbar" aria-label="Renta Robo">
           <button
             type="button"
             className={tab === "explore" ? "tab is-on" : "tab"}
@@ -412,11 +414,11 @@ export function RentABotApp() {
         </nav>
       ) : null}
 
-      {showBookbar ? (
+      {listing ? (
         <div className="bookbar">
           <div>
-            <p className="book-window">{HALE.window}</p>
-            <p className="book-rate">{HALE.rate}</p>
+            <p className="book-window">{listing.window}</p>
+            <p className="book-rate">{listing.rate}</p>
           </div>
           <button type="button" className="book" onClick={() => setBookNote(true)}>
             Book

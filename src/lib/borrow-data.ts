@@ -13,108 +13,136 @@ export type Skill = (typeof SKILLS)[number];
 
 export const GUEST_RATE = "$18 / hr";
 
-export type HeroItem = {
-  id: string;
-  label: string;
-  src: string;
-  opensHale?: boolean;
-};
-
-export const HERO: HeroItem[] = [
-  { id: "nurse", label: "Nurse", src: "/img/carousel-nurse.png" },
-  { id: "gigi", label: "Gigi", src: "/img/gigi-kids.png" },
-  { id: "wren", label: "Wren", src: "/img/wren-clean.png" },
-  { id: "bo", label: "Bo", src: "/img/bo-garden.png" },
-  { id: "dog", label: "Dog", src: "/img/carousel-dog.png" },
-  { id: "hale", label: "Hale", src: "/img/hale-gym.png", opensHale: true },
-  { id: "errands", label: "Errands", src: "/img/hale-gym.png" },
-  { id: "fox", label: "Fox", src: "/img/fox-kids.png" },
-];
-
-export type ListingCard = {
+export type Listing = {
   id: string;
   name: string;
-  model: string;
   src: string;
+  extraSrcs?: string[];
   skills: Skill[];
   distance: string;
-  opensHale?: boolean;
+  meta: string;
+  rate: string;
+  buyLine: string;
+  about: string[];
+  sampleJobs: string[];
+  houseRules: string[];
+  window: string;
 };
 
-export const CARDS: ListingCard[] = [
+export const MACHINES: Listing[] = [
   {
-    id: "hale",
-    name: "Hale",
-    model: "H2",
-    src: "/img/hale-gym.png",
+    id: "tesla-optimus",
+    name: "Tesla Optimus",
+    src: "/img/tesla-optimus.jpg",
     skills: ["Gym", "Errands"],
     distance: "0.6 mi",
-    opensHale: true,
+    meta: "Optimus · 0.6 mi · Mission",
+    rate: GUEST_RATE,
+    buyLine:
+      "No public retail price and no cart. Musk has talked $20–30k as a target, not a buy button.",
+    about: [
+      "Tesla’s full-size humanoid, the one with TESLA on the chest.",
+      "You teach the workout or the grocery haul. This is not a factory chore bot you order online.",
+    ],
+    sampleJobs: ["The workout", "The grocery haul"],
+    houseRules: ["Spare batteries", "Sidewalks", "Back by 8pm"],
+    window: "Sat 2–4pm",
   },
   {
-    id: "wren",
-    name: "Wren",
-    model: "NEO",
-    src: "/img/wren-clean.png",
-    skills: ["Clean", "Kids", "Errands"],
-    distance: "1.1 mi",
-  },
-  {
-    id: "gigi",
-    name: "Gigi",
-    model: "G1",
-    src: "/img/gigi-kids.png",
+    id: "unitree-g1",
+    name: "Unitree G1",
+    src: "/img/unitree-g1.jpg",
+    extraSrcs: ["/img/unitree-g1-studio.jpg"],
     skills: ["Kids", "Gym"],
     distance: "1.2 mi",
+    meta: "G1 · 1.2 mi · Mission",
+    rate: GUEST_RATE,
+    buyLine: "Official machine price $13,500. Guest rate $18/hr.",
+    about: [
+      "Unitree’s smaller humanoid. Official stills, not a costume.",
+      "Book it when you want a compact extra body for kids time or a workout.",
+    ],
+    sampleJobs: ["Kids time", "The workout"],
+    houseRules: ["Spare batteries", "Sidewalks", "Back by 8pm"],
+    window: "Sat 2–4pm",
   },
   {
-    id: "fox",
-    name: "Fox",
-    model: "X2",
-    src: "/img/fox-kids.png",
-    skills: ["Grill", "Kids"],
-    distance: "0.9 mi",
+    id: "1x-neo",
+    name: "1X NEO",
+    src: "/img/1x-neo.jpg",
+    skills: ["Clean", "Kids"],
+    distance: "1.1 mi",
+    meta: "NEO · 1.1 mi · Mission",
+    rate: GUEST_RATE,
+    buyLine: "1X lists $20,000 or $499/mo. Guest rate $18/hr.",
+    about: [
+      "The knit-suit home humanoid from 1X. Soft cover, visor head.",
+      "Clean-up and kids time, not a spec sheet.",
+    ],
+    sampleJobs: ["The tidy-up", "Kids time"],
+    houseRules: ["Spare batteries", "Indoors first", "Back by 8pm"],
+    window: "Sat 2–4pm",
   },
   {
-    id: "bo",
-    name: "Bo",
-    model: "T1",
-    src: "/img/bo-garden.png",
-    skills: ["Garden", "Gym"],
+    id: "boston-atlas",
+    name: "Boston Dynamics Atlas",
+    src: "/img/boston-atlas.jpg",
+    skills: ["Gym", "Errands"],
     distance: "0.4 mi",
+    meta: "Atlas · 0.4 mi · Mission",
+    rate: GUEST_RATE,
+    buyLine: "Not a consumer SKU. Guest rate $18/hr.",
+    about: [
+      "The lab Atlas — exposed hydraulics, Boston Dynamics on the chest.",
+      "You cannot buy this at retail. The guest rate is for an afternoon, not a purchase.",
+    ],
+    sampleJobs: ["The workout", "The heavy carry"],
+    houseRules: ["Lab rules", "Spotter in the room", "Back by 8pm"],
+    window: "Sat 2–4pm",
   },
+  {
+    id: "figure-02",
+    name: "Figure 02",
+    src: "/img/figure-02.png",
+    skills: ["Errands", "Clean"],
+    distance: "0.9 mi",
+    meta: "F.02 · 0.9 mi · Mission",
+    rate: GUEST_RATE,
+    buyLine: "No public retail price. Guest rate $18/hr.",
+    about: [
+      "Figure AI’s matte-black F.02, the factory still with F.02 on the chest.",
+      "Errands and clean-up. No invented sticker price.",
+    ],
+    sampleJobs: ["The grocery haul", "The tidy-up"],
+    houseRules: ["Spare batteries", "Sidewalks", "Back by 8pm"],
+    window: "Sat 2–4pm",
+  },
+];
+
+export const HERO = [
+  { id: "tesla-optimus", label: "Optimus", src: "/img/tesla-optimus.jpg" },
+  { id: "unitree-g1", label: "G1", src: "/img/unitree-g1.jpg" },
+  { id: "1x-neo", label: "NEO", src: "/img/1x-neo.jpg" },
+  { id: "boston-atlas", label: "Atlas", src: "/img/boston-atlas.jpg" },
+  { id: "figure-02", label: "Figure 02", src: "/img/figure-02.png" },
 ];
 
 export const FILTER_IDS: Record<Skill, string[]> = {
   Nurse: [],
-  Kids: ["wren", "gigi", "fox"],
+  Kids: ["unitree-g1", "1x-neo"],
   Dog: [],
-  Clean: ["wren"],
-  Garden: ["bo"],
-  Gym: ["hale", "gigi", "bo"],
-  Errands: ["hale", "wren"],
-  Grill: ["fox"],
+  Clean: ["1x-neo", "figure-02"],
+  Garden: [],
+  Gym: ["tesla-optimus", "unitree-g1", "boston-atlas"],
+  Errands: ["tesla-optimus", "boston-atlas", "figure-02"],
+  Grill: [],
 };
 
-export const HALE = {
-  name: "Hale",
-  src: "/img/hale-gym.png",
-  meta: "H2 · 0.6 mi · Mission",
-  rate: GUEST_RATE,
-  buyLine: "This robot costs about $29,900 to buy (tax & shipping extra).",
-  about: [
-    "Hale is the full-size one, about as tall as you, good when you need something that can reach a shelf or move plates.",
-    "You teach the workout or the grocery haul; this is not a factory chore bot.",
-    "Book Hale when you want an extra body in the room, not a spec sheet.",
-  ],
-  skills: ["Gym", "Errands"] as Skill[],
-  sampleJobs: ["The workout", "The grocery haul"],
-  houseRules: ["Spare batteries", "Sidewalks", "Back by 8pm"],
-  host: "Sam",
-  window: "Sat 2–4pm",
-};
-
-export function cardsForSkill(skill: Skill): ListingCard[] {
+export function cardsForSkill(skill: Skill): Listing[] {
   const ids = FILTER_IDS[skill];
-  return CARDS.filter((card) => ids.includes(card.id));
+  return MACHINES.filter((machine) => ids.includes(machine.id));
+}
+
+export function machineById(id: string): Listing | undefined {
+  return MACHINES.find((machine) => machine.id === id);
 }
