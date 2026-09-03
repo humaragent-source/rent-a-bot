@@ -237,6 +237,9 @@ export function RentaRoboApp() {
 
           <h2 className="section-title">Near you</h2>
           <div className="cards">
+            {cards.length === 0 ? (
+              <p className="empty-cards">Nobody nearby for {skill} yet.</p>
+            ) : null}
             {cards.map((card) => {
               const inner = (
                 <>

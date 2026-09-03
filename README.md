@@ -16,12 +16,12 @@ Public signed-out site: [https://humaragent-source.github.io/rent-a-bot/](https:
 ## What’s on the phone
 
 - Brand **Renta Robo**, lockup `Renta Robo -` plus a muted last-word slot (Bot → Nurse → Helper → Walker → Cleaner → Gardener → Trainer → Cook → Bot)
-- Five real machines at **$18/hr** on the card. No ratings.
-  - Tesla Optimus — Gym / Errands. No public retail, no cart. Musk has talked $20–30k as a target.
-  - Unitree G1 — Kids / Gym. Official $13,500.
-  - 1X NEO — Clean / Kids. $20,000 or $499/mo.
-  - Boston Dynamics Atlas — Gym / Errands. Not a consumer SKU.
-  - Figure 02 — Errands / Clean. No public retail.
+- Five real machines at **$18/hr** on the card. No ratings. Photos are 4:5 listing crops in `public/img/`.
+  - Optimus — Errands, Clean — 0.8 mi — `optimus.jpg`
+  - G1 — Kids, Gym — 1.2 mi — `g1.jpg`
+  - NEO — Clean, Kids, Errands — 1.1 mi — `neo.png`
+  - Atlas — Gym — 2.0 mi — `atlas.jpg`
+  - Figure 02 — Errands — 1.6 mi — `figure02.jpg`
 - Waitlist: **I want to rent** / **I have a robot** (localStorage on GitHub Pages)
 
 ## Out of scope

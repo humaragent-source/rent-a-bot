@@ -5,7 +5,7 @@ type BrandLockupProps = {
 export function BrandLockup({ onClick }: BrandLockupProps) {
   return (
     <h1 className="lockup" onClick={onClick}>
-      <span className="lockup-static">Renta Robo -</span>
+      <span className="lockup-static">Renta Robo&nbsp;-&nbsp;</span>
       <span className="lockup-slot" aria-hidden="true">
         <span className="lockup-reel">
           <span className="lw c-bot">Bot</span>
@@ -19,7 +19,7 @@ export function BrandLockup({ onClick }: BrandLockupProps) {
           <span className="lw c-bot">Bot</span>
         </span>
       </span>
-      <span className="sr-only">Renta Robo</span>
+      <span className="sr-only">Renta Robo - Bot</span>
     </h1>
   );
 }
