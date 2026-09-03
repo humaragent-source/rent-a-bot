@@ -36,7 +36,7 @@ const WAITLIST_COPY: Record<
 
 export function RentaRoboApp() {
   const [tab, setTab] = useState<Tab>("explore");
-  const [skill, setSkill] = useState<Skill>("Gym");
+  const [skill, setSkill] = useState<Skill>("Clean");
   const [listingId, setListingId] = useState<string | null>(null);
   const [bookNote, setBookNote] = useState(false);
   const [intent, setIntent] = useState<WaitlistIntent | null>(null);

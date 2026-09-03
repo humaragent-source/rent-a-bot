@@ -68,7 +68,7 @@ export const MACHINES: Listing[] = [
   {
     id: "1x-neo",
     name: "NEO",
-    src: "/img/neo.png",
+    src: "/img/neo.jpg",
     skills: ["Clean", "Kids", "Errands"],
     distance: "1.1 mi",
     meta: "NEO · 1.1 mi · Mission",
@@ -123,7 +123,7 @@ export const MACHINES: Listing[] = [
 export const HERO = [
   { id: "tesla-optimus", label: "Optimus", src: "/img/optimus.jpg" },
   { id: "unitree-g1", label: "G1", src: "/img/g1.jpg" },
-  { id: "1x-neo", label: "NEO", src: "/img/neo.png" },
+  { id: "1x-neo", label: "NEO", src: "/img/neo.jpg" },
   { id: "boston-atlas", label: "Atlas", src: "/img/atlas.jpg" },
   { id: "figure-02", label: "Figure 02", src: "/img/figure02.jpg" },
 ];
