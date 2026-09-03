@@ -9,6 +9,7 @@ import { BrandLockup } from "@/components/brand-lockup";
 import { asset } from "@/lib/asset";
 import {
   HERO,
+  MACHINES,
   SKILLS,
   cardsForSkill,
   machineById,
@@ -36,7 +37,7 @@ const WAITLIST_COPY: Record<
 
 export function RentaRoboApp() {
   const [tab, setTab] = useState<Tab>("explore");
-  const [skill, setSkill] = useState<Skill>("Clean");
+  const [skill, setSkill] = useState<Skill | null>(null);
   const [listingId, setListingId] = useState<string | null>(null);
   const [bookNote, setBookNote] = useState(false);
   const [intent, setIntent] = useState<WaitlistIntent | null>(null);
@@ -47,7 +48,10 @@ export function RentaRoboApp() {
   >("idle");
   const [waitMessage, setWaitMessage] = useState<string | null>(null);
 
-  const cards = useMemo(() => cardsForSkill(skill), [skill]);
+  const cards = useMemo(
+    () => (skill ? cardsForSkill(skill) : MACHINES),
+    [skill]
+  );
 
   function goExplore() {
     setTab("explore");
@@ -200,8 +204,6 @@ export function RentaRoboApp() {
               </button>
             ))}
           </div>
-
-          <h1 className="headline">A robot for the afternoon.</h1>
 
           <div className="search">
             <div className="search-row">

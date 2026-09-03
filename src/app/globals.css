@@ -245,7 +245,7 @@ body {
   flex: 0 0 92px;
   border: 0;
   background: none;
-  text-align: left;
+  text-align: center;
   color: inherit;
 }
 
@@ -277,7 +277,7 @@ body {
 }
 
 .search {
-  margin: 0 16px;
+  margin: 8px 16px 0;
   position: relative;
   background: #fff;
   border-radius: 28px;
